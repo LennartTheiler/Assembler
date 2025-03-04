@@ -1,0 +1,9 @@
+8-Bit Microcontroller Addition with 7-Segment Display Output
+This project implements the addition of two 32-bit two’s complement numbers using assembly language for an 8-bit microcontroller. The result, including carry, is stored in memory and displayed on a 7-segment display. The program initializes registers, performs byte-wise addition with carry propagation, and maps the result to a lookup table for correct digit representation.
+
+Key Features:
+
+32-bit addition with carry handling
+Assembly-level implementation for low-level hardware interaction
+7-segment display output using a lookup table
+Ideal for learning microcontroller programming, low-level arithmetic operations, and embedded system debugging.
