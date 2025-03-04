@@ -1,0 +1,3 @@
+".\Objects\main_asm.obj" 
+TO ".\Objects\UART_ASM" 
+PRINT(".\Listings\UART_ASM.m51") RAMSIZE(256) 

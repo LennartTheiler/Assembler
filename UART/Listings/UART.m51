@@ -1,0 +1,178 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    06/20/2024  08:25:38  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\USERS\LENNA\ONEDRIVE\DESKTOP\STUDIUM\2. SEMESTER\MCT\C51\BIN\BL51.EXE .\Objects\START_XC88x.obj, .\Objects\main.obj T
+>> O .\Objects\UART PRINT (.\Listings\UART.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\START_XC88x.obj (?C_STARTUP)
+  .\Objects\main.obj (MAIN)
+
+
+LINK MAP OF MODULE:  .\Objects\UART (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0027H     UNIT         ?PR?MAIN?MAIN
+            CODE    0827H     0026H     UNIT         ?PR?INIT?MAIN
+            CODE    084DH     001AH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\UART (?C_STARTUP)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  0008H    0001H
+  +--> ?PR?INIT?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\UART (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:084DH         SEGMENT       ?C_C51STARTUP
+  I:0009H         SEGMENT       ?STACK
+  D:00A2H         PUBLIC        ?C?DPSEL
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2024  08:25:38  PAGE 2
+
+
+  D:00F0H         SYMBOL        B
+  D:00BAH         SYMBOL        CMCON
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0100H         SYMBOL        IDATALEN
+  C:0850H         SYMBOL        IDATALOOP
+  D:0096H         SYMBOL        MEX3
+  N:000AH         SYMBOL        NDIV
+  D:00B6H         SYMBOL        OSC_CON
+  D:00BBH         SYMBOL        PASSWD
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:F000H         SYMBOL        PDATASTART
+  D:00B7H         SYMBOL        PLL_CON
+  D:00EAH         SYMBOL        PLL_CON1
+  N:00F0H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00BFH         SYMBOL        SCU_PAGE
+  D:0081H         SYMBOL        SP
+  C:084DH         SYMBOL        STARTUP1
+  D:00B3H         SYMBOL        XADDRH
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0600H         SYMBOL        XDATALEN
+  C:085BH         SYMBOL        XDATALOOP
+  N:F000H         SYMBOL        XDATASTART
+  N:0000H         SYMBOL        XTAL
+  C:0000H         LINE#         165
+  C:084DH         LINE#         224
+  C:084FH         LINE#         225
+  C:0850H         LINE#         226
+  C:0851H         LINE#         227
+  C:0853H         LINE#         231
+  C:0856H         LINE#         232
+  C:0858H         LINE#         236
+  C:085AH         LINE#         238
+  C:085BH         LINE#         239
+  C:085CH         LINE#         240
+  C:085DH         LINE#         241
+  C:085FH         LINE#         242
+  C:0861H         LINE#         278
+  C:0864H         LINE#         280
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00B0H         PUBLIC        P3_DATA
+  B:00A8H.7       PUBLIC        EA
+  D:00BEH         PUBLIC        BG
+  B:00A8H.4       PUBLIC        ES
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  D:00BDH         PUBLIC        BCON
+  C:0800H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  06/20/2024  08:25:38  PAGE 3
+
+
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  C:0827H         PUBLIC        init
+  D:0091H         PUBLIC        P1_DIR
+  D:00B1H         PUBLIC        P3_DIR
+  D:00B2H         PUBLIC        PORT_PAGE
+  D:0090H         PUBLIC        P1_ALTSEL0
+  D:0091H         PUBLIC        P1_ALTSEL1
+  D:00B3H         PUBLIC        MODPISEL
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        SendByte
+  -------         ENDDO         
+  C:0800H         LINE#         21
+  C:0800H         LINE#         22
+  C:0803H         LINE#         23
+  C:0806H         LINE#         24
+  C:0806H         LINE#         25
+  C:0809H         LINE#         26
+  C:080BH         LINE#         27
+  C:080EH         LINE#         28
+  C:0810H         LINE#         29
+  C:0819H         LINE#         30
+  C:081CH         LINE#         32
+  C:081FH         LINE#         33
+  C:0821H         LINE#         34
+  C:0825H         LINE#         35
+  -------         ENDPROC       MAIN
+  -------         PROC          INIT
+  C:0827H         LINE#         40
+  C:0827H         LINE#         42
+  C:082AH         LINE#         43
+  C:082DH         LINE#         44
+  C:0830H         LINE#         47
+  C:0832H         LINE#         48
+  C:0835H         LINE#         49
+  C:0838H         LINE#         50
+  C:083BH         LINE#         51
+  C:083DH         LINE#         54
+  C:0840H         LINE#         55
+  C:0843H         LINE#         56
+  C:0846H         LINE#         61
+  C:0848H         LINE#         62
+  C:084AH         LINE#         63
+  C:084CH         LINE#         65
+  -------         ENDPROC       INIT
+  -------         ENDMOD        MAIN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 006AH BYTE ( 5%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=106
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

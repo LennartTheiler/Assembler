@@ -1,0 +1,107 @@
+C51 COMPILER V9.60.7.0   MAIN_C_UART_INTER                                                 07/10/2024 13:41:25 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN_C_UART_INTER
+OBJECT MODULE PLACED IN .\Objects\MAIN_C_UART_INTER.obj
+COMPILER INVOKED BY: C:\Users\lenna\OneDrive\Desktop\Studium\2. Semester\MCT\C51\BIN\C51.EXE MAIN_C_UART_INTER.c OPTIMIZ
+                    -E(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\MAIN_C_UART_INTER.lst) TABS(2) OBJECT(.\Objects\MAIN_C_UART_INTER.
+                    -obj)
+
+line level    source
+
+   1          #include <XC888CLM.h>
+   2          // Loop serialLoopback initfile
+   3          /* UART Mode 1
+   4          transmit and Receive, closeLoop, NullModem (Man verbindet TX mit RX und sendet es sich slebst)
+   5          1 Start Bit, 1 Stop Bit
+   6          Interrupt
+   7          Baudrate 9600
+   8          intern RxD0
+   9          Port 1 für die UART
+  10          P1.0 receive
+  11          P1.1 send
+  12                                                 
+  13          Altsel0   auf ALT1 stellen      0000 0001
+  14          Altwel1   auf ALT2 stellen      0000 0010
+  15                                                 ^^
+  16                                                 
+  17          */
+  18          
+  19          void init();
+  20          volatile char Flag = 0;
+  21          //volatile char RecByte = 0; Not needed
+  22          volatile char SendByte = 0x30;  // Leerzeichen
+  23          
+  24          void main(){
+  25   1        init();
+  26   1        while (1){
+  27   2          while(Flag == 0){}  // Polling or UART tx ready
+  28   2          Flag = 0;         // clr TI Flag
+  29   2          SBUF = SendByte;
+  30   2          SendByte++;
+  31   2          if (SendByte > 0x60)
+  32   2            SendByte = 0x30;
+  33   2        
+  34   2          
+  35   2        } 
+  36   1      }
+  37          
+  38          
+  39          
+  40          void init(){
+  41   1        // Ports
+  42   1        P1_DIR = 0x02;      //Alle Pins auf Eingagn außer P1.1
+  43   1        P3_DIR = 0xFF;
+  44   1        P3_DATA = 0x00;
+  45   1        
+  46   1        //UART
+  47   1        MODPISEL = 0x00;    //default RxD0
+  48   1        PORT_PAGE = 2;      // switch to altsel
+  49   1        P1_ALTSEL0 = 0x01;  // 0000 0001
+  50   1        P1_ALTSEL1 = 0x02;  // 0000 0010
+  51   1        PORT_PAGE = 0;
+  52   1        
+  53   1        //BOADRATE 9600 /BR_VALUE +1, also -1 rechnen
+C51 COMPILER V9.60.7.0   MAIN_C_UART_INTER                                                 07/10/2024 13:41:25 PAGE 2   
+
+  54   1        BG = 155;           // 156 - 1
+  55   1        BCON = 0x81;        //BGsel 10, R=1, Rets=0
+  56   1        SCON = 0x50;        // 0101 0000 Mode 1, REN = 1, kein TB8, kein RB8, TI = 0, RI = 0
+  57   1                            // To DO: check Mode in Simulator
+  58   1                            // Muss in dieser Reihenfolge programmiert werden!!
+  59   1        
+  60   1        // Int oder Polling
+  61   1        ES = 0x1;
+  62   1        EA = 0x1;           // Disabel interrupts 
+  63   1        TI = 0x01;          // Dummy to get started 
+  64   1      
+  65   1      }
+  66          
+  67          
+  68          void ISR_UART(void) interrupt 4 {        // xintr 4 It. laut Datenblatt, shared inter. Typ2
+  69   1        if (RI)
+  70   1        {
+  71   2          RI = 0;           // muss slebst gelöscht werden, Typ2
+  72   2          P3_DATA = SBUF;     // read rec buffer
+  73   2        } 
+  74   1        
+  75   1        if (TI)
+  76   1        {
+  77   2          TI = 0;
+  78   2          Flag = 1;
+  79   2        }
+  80   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     96    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

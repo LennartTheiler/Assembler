@@ -1,0 +1,4 @@
+".\Objects\START_XC88x.obj",
+".\Objects\MAIN_C_UART_INTER.obj" 
+TO ".\Objects\UART_C_INTERRUPT" 
+PRINT(".\Listings\UART_C_INTERRUPT.m51") RAMSIZE(256) 

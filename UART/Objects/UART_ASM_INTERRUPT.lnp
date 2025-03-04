@@ -1,0 +1,3 @@
+".\Objects\main_ASM_INT.obj" 
+TO ".\Objects\UART_ASM_INTERRUPT" 
+PRINT(".\Listings\UART_ASM_INTERRUPT.m51") RAMSIZE(256) 
