@@ -7,5 +7,6 @@ Key Features:
 - Efficient polling mechanism with a flag-based approach
 - Low-level microcontroller programming in assembly
 - Port manipulation for real-time system interaction
-- Ideal for learning embedded system timing, interrupt handling, and real-time hardware control.
+
+Ideal for learning embedded system timing, interrupt handling, and real-time hardware control.
 
