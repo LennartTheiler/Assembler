@@ -1,0 +1,11 @@
+Timer-Based Counter with Interrupt Handling for 8-Bit Microcontroller
+This project demonstrates the use of a hardware timer interrupt to control a counter on an 8-bit microcontroller using assembly language. The system utilizes Timer 0 in mode 1 to decrement a counter and toggle an output on Port 3. A polling mechanism checks a flag set by the interrupt service routine (ISR) to trigger the decrement operation.
+
+Key Features:
+
+- Timer 0 interrupt-driven counter
+- Efficient polling mechanism with a flag-based approach
+- Low-level microcontroller programming in assembly
+- Port manipulation for real-time system interaction
+- Ideal for learning embedded system timing, interrupt handling, and real-time hardware control.
+
