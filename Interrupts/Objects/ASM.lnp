@@ -1,0 +1,3 @@
+".\Objects\InterruptInASM.obj" 
+TO ".\Objects\ASM" 
+PRINT(".\Listings\ASM.m51") RAMSIZE(256) 
