@@ -1,0 +1,3 @@
+".\Objects\main.obj" 
+TO ".\Objects\32_bit_addierer_assembler" 
+PRINT(".\Listings\32_bit_addierer_assembler.m51") RAMSIZE(256) 
